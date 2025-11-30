@@ -1,0 +1,66 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+body {
+    font-family: "Open Sans", sans-serif;
+    overflow-x: hidden;
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+@theme {
+    --color-primary: #ff8000;
+    --color-dark-primary: #ea6c18;
+    --color-secondary: #000000;
+    --color-white: #F9FAFB;
+    --color-text: #111827;
+    --color-border: #E5E7EB;
+    --bg-dark-bg: #263243;
+    --text-dark-text: #D1D5DB;
+}
+
+.animated {
+    clip-path: polygon(100% 0%, 100% 0, 100% 100%, 100% 100%);
+}
+
+.offer-span {
+    clip-path: polygon(0 0, 7% 0, 0 30%, 0 100%, 100% 100%, 100% 0);
+
+}
+
+.triangle {
+    clip-path: polygon(0 60%, 60% 0, 70% 70%);
+    width: 2rem;
+    height: 2rem;
+    position: absolute;
+    top: -2%;
+    left: -2%;
+}
+
+.products::-webkit-scrollbar {
+    display: none;
+}
+
+.products {
+    scroll-snap-type: x mandatory;
+}
+
+.card {
+    scroll-snap-align: start;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.animate-slide-in {
+    animation: slideIn 0.3s ease-out forwards;
+}

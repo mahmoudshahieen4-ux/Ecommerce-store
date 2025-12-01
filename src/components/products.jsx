@@ -58,10 +58,10 @@ export default function Products({ label, category }) {
         <span className="triangle bg-dark-primary"></span>
       </div>
 
-      <div className="relative px-2 sm:px-4 md:px-0">
+      <div className="relative px-2 sm:px-4 md:px-0 group">
         <button
           onClick={() => scroll("left")}
-          className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg opacity-0 hover:opacity-100 transition-all duration-300 -ml-2 md:-ml-4 hidden md:block"
+          className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg opacity-100 transition-all duration-300 -ml-2 md:-ml-4 hidden md:block"
           aria-label="Scroll left"
         >
           <ChevronLeft className="w-6 h-6" />
@@ -78,7 +78,7 @@ export default function Products({ label, category }) {
 
         <button
           onClick={() => scroll("right")}
-          className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg opacity-0 hover:opacity-100 transition-all duration-300 -mr-2 md:-mr-4 hidden md:block"
+          className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg opacity-100 transition-all duration-300 -mr-2 md:-mr-4 hidden md:block"
           aria-label="Scroll right"
         >
           <ChevronRight className="w-6 h-6" />

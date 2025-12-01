@@ -28,7 +28,7 @@ export default function Nav() {
   }, [isOpen]);
 
   return (
-    <nav className="w-full fixed z-[9999] top-0 transition-all duration-300 bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 shadow-sm">
+    <nav className="w-full fixed z-[9999] top-0 transition-all duration-300 bg-white dark:bg-black border-b border-gray-200 dark:border-gray-800 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo Section */}

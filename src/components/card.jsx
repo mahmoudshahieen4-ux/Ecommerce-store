@@ -42,7 +42,7 @@ export default function Card({ product }) {
   };
 
   return (
-    <div className="card flex flex-col justify-between shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300 dark:text-white dark:border dark:border-gray-700 min-w-[220px] max-w-[280px] bg-white dark:bg-gray-800 group/card">
+    <div className="card flex flex-col justify-between shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300 dark:text-white dark:border dark:border-gray-700 min-w-[160px] w-[180px] sm:min-w-[220px] sm:w-[240px] md:min-w-[240px] md:w-[260px] lg:min-w-[260px] lg:w-[280px] bg-white dark:bg-gray-800 group/card flex-shrink-0">
       {/* Image Container */}
       <div className="relative h-48 bg-gray-100 dark:bg-gray-700 flex items-center justify-center overflow-hidden">
         <img

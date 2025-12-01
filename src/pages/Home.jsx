@@ -9,7 +9,7 @@ import img5 from "../assets/banner_box5.jpg";
 
 export default function Home() {
   return (
-    <div className="max-w-7xl mx-auto overflow-x-hidden">
+    <div className="w-full max-w-7xl mx-auto px-2 sm:px-4 overflow-x-hidden">
       <Header />
       <Products label="Featured" />
       <Ads img1={img1} img2={img2} img3={img3} />

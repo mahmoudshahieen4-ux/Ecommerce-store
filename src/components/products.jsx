@@ -26,7 +26,7 @@ export default function Products({ label, category }) {
 
   if (loading) {
     return (
-      <div className="max-w-7xl mx-auto mb-8 py-12">
+      <div className="w-full max-w-7xl mx-auto mb-8 py-12">
         <div className="flex items-center justify-center gap-3">
           <Loader2 className="w-8 h-8 animate-spin text-primary" />
           <span className="text-gray-600 dark:text-gray-400">Loading products...</span>
@@ -37,7 +37,7 @@ export default function Products({ label, category }) {
 
   if (filteredProducts.length === 0) {
     return (
-      <div className="max-w-7xl mx-auto">
+      <div className="w-full max-w-7xl mx-auto">
         <div className="offer-span bg-primary text-white text-center max-w-60 p-2 text-xl font-bold flex justify-center items-center relative text-nowrap">
           <Tag className="text-white mr-2" />
           {label}
@@ -51,14 +51,14 @@ export default function Products({ label, category }) {
   }
 
   return (
-    <div className="max-w-7xl mx-auto pb-8">
+    <div className="w-full max-w-7xl mx-auto pb-8">
       <div className="offer-span bg-primary text-white text-center max-w-70 p-2 text-xl font-bold flex justify-center items-center relative text-nowrap left-0">
         <Tag className="text-white mr-2" />
         {label}
         <span className="triangle bg-dark-primary"></span>
       </div>
 
-      <div className="relative px-4 md:px-0">
+      <div className="relative px-2 sm:px-4 md:px-0">
         <button
           onClick={() => scroll("left")}
           className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg opacity-0 hover:opacity-100 transition-all duration-300 -ml-2 md:-ml-4 hidden md:block"
@@ -69,7 +69,7 @@ export default function Products({ label, category }) {
 
         <div
           ref={scrollRef}
-          className="products flex whitespace-nowrap gap-4 p-4 bg-transparent border-t-3 border-primary pb-10 overflow-x-auto scroll-smooth no-scrollbar"
+          className="products flex whitespace-nowrap gap-3 sm:gap-4 p-2 sm:p-4 bg-transparent border-t-3 border-primary pb-10 overflow-x-auto scroll-smooth no-scrollbar"
         >
           {filteredProducts.map((product) => (
             <Card key={product.id} product={product} />

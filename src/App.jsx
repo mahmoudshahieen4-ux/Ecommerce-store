@@ -16,7 +16,7 @@ function App() {
   return (
     <AppProvider>
       <Nav />
-      <main className="mx-auto overflow-x-hidden mt-30 dark:bg-gray-900">
+      <main className="mx-auto overflow-x-hidden pt-30 dark:bg-gray-900 w-full">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/products" element={<Products />} />

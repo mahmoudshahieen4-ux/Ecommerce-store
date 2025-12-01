@@ -4,7 +4,16 @@
 body {
     font-family: "Open Sans", sans-serif;
     overflow-x: hidden;
-    width: 100vw;
+    max-width: 100vw;
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
     overflow-x: hidden;
 }
 
@@ -25,7 +34,6 @@ body {
 
 .offer-span {
     clip-path: polygon(0 0, 7% 0, 0 30%, 0 100%, 100% 100%, 100% 0);
-
 }
 
 .triangle {
@@ -43,6 +51,7 @@ body {
 
 .products {
     scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
 }
 
 .card {

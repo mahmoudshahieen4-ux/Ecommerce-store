@@ -65,6 +65,14 @@
 - `.github/workflows/deploy.yml` - GitHub Actions workflow
 - `.agent/workflows/deploy-github-pages.md` - Deployment documentation
 
+### 5. Fixed Mobile Menu Z-Index
+**Problem**: The slide-out menu was appearing under other components.
+
+**Solutions Implemented**:
+- Increased `nav` z-index to `z-[9999]`
+- Fixed z-index typo in mobile menu button
+- Ensured navigation stays on top of all other content
+
 ## 🌐 Live Site URL
 
 Your site will be available at:

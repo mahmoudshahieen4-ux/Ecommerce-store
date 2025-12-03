@@ -33,15 +33,15 @@ export default function Footer() {
             <div className="space-y-3">
               <div className="flex items-start gap-3 text-gray-400 hover:text-primary transition-colors group">
                 <MapPin className="h-5 w-5 mt-0.5 flex-shrink-0 group-hover:scale-110 transition-transform" />
-                <span className="text-sm">123 Commerce Street, New York, NY 10001</span>
+                <span className="text-sm">mit ghame - eldaqahliya -Egypt</span>
               </div>
               <div className="flex items-center gap-3 text-gray-400 hover:text-primary transition-colors group">
                 <Phone className="h-5 w-5 flex-shrink-0 group-hover:scale-110 transition-transform" />
-                <span className="text-sm">+1 (555) 123-4567</span>
+                <span className="text-sm">+20 01007852868</span>
               </div>
               <div className="flex items-center gap-3 text-gray-400 hover:text-primary transition-colors group">
                 <Mail className="h-5 w-5 flex-shrink-0 group-hover:scale-110 transition-transform" />
-                <span className="text-sm">support@store.com</span>
+                <span className="text-sm">mahmoudshahieen4@gmail.com</span>
               </div>
             </div>
           </div>

@@ -8,8 +8,8 @@ export default function SignUp() {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   return (
-    <main className="w-screen min-h-screen bg-gradient-to-br from-red-600 via-orange-500 to-orange-400 p-5 md:p-10 flex justify-center items-center">
-      <div className="container max-w-lg w-full bg-white dark:bg-black shadow-2xl p-8 rounded-2xl border border-white/20">
+    <main className="w-screen min-h-screen bg-gradient-to-br from-red-600 via-orange-500 to-orange-400 pb-5 pt-30 flex justify-center items-center">
+      <div className="container max-w-lg w-full bg-white dark:bg-black shadow-2xl rounded-md p-3 sm:p-8 sm:rounded-2xl border border-white/20">
         <div className="flex flex-col items-center mb-6">
           <img src={logo} alt="Shieen Logo" className="w-28 mb-4 drop-shadow-md" />
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-1">Create Account</h2>

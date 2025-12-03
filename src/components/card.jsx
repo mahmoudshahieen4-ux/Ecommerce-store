@@ -1,4 +1,5 @@
 import { Star, Heart, ShoppingCart } from "lucide-react";
+import { Link } from "react-router-dom";
 import { useAppContext } from "../context/AppContext";
 import { useState } from "react";
 
@@ -45,11 +46,13 @@ export default function Card({ product }) {
     <div className="card flex flex-col justify-between shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300 dark:text-white dark:border dark:border-gray-700 min-w-[160px] w-[180px] sm:min-w-[220px] sm:w-[240px] md:min-w-[240px] md:w-[260px] lg:min-w-[260px] lg:w-[280px] bg-white dark:bg-gray-800 group/card flex-shrink-0">
       {/* Image Container */}
       <div className="relative h-48 bg-gray-100 dark:bg-gray-700 flex items-center justify-center overflow-hidden">
-        <img
-          src={product.image}
-          alt={product.title}
-          className="w-full h-full object-contain p-4 group-hover/card:scale-110 transition-transform duration-300"
-        />
+        <Link to={`/product/${product.id}`} className="w-full h-full flex items-center justify-center">
+          <img
+            src={product.image}
+            alt={product.title}
+            className="w-full h-full object-contain p-4 group-hover/card:scale-110 transition-transform duration-300"
+          />
+        </Link>
 
         {/* Wishlist Button - Floating */}
         <button
@@ -72,9 +75,11 @@ export default function Card({ product }) {
 
       {/* Content */}
       <div className="p-4 flex flex-col gap-2 flex-1">
-        <h3 className="font-semibold text-sm line-clamp-2 text-gray-900 dark:text-white min-h-[40px]">
-          {product.title}
-        </h3>
+        <Link to={`/product/${product.id}`}>
+          <h3 className="font-semibold text-sm line-clamp-2 text-gray-900 dark:text-white min-h-[40px] hover:text-primary transition-colors">
+            {product.title}
+          </h3>
+        </Link>
 
         {/* Category */}
         <span className="text-xs text-gray-500 dark:text-gray-400 uppercase">

@@ -8,15 +8,20 @@ import Contact from "./pages/contact";
 import Wishlist from "./pages/wishlist";
 import Cart from "./pages/cart";
 import Checkout from "./pages/checkout";
+import Category from "./pages/category";
+import ProductDetails from "./pages/ProductDetails";
 import Footer from "./components/footer";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { AppProvider } from "./context/AppContext";
 
 function App() {
+  const location = useLocation();
+  const isAuthPage = ['/login', '/signup'].includes(location.pathname);
+
   return (
     <AppProvider>
       <Nav />
-      <main className="mx-auto overflow-x-hidden pt-30 dark:bg-gray-900 w-full">
+      <main className={`mx-auto overflow-x-hidden w-full dark:bg-gray-900 ${isAuthPage ? '' : 'pt-30'}`}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/products" element={<Products />} />
@@ -27,6 +32,8 @@ function App() {
           <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/category/:category" element={<Category />} />
+          <Route path="/product/:id" element={<ProductDetails />} />
         </Routes>
       </main>
       <Footer />

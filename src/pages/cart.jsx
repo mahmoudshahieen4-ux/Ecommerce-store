@@ -68,20 +68,22 @@ export default function Cart() {
                                     className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-4 sm:p-6"
                                 >
                                     <div className="flex gap-4">
-                                        <div className="flex-shrink-0 w-24 h-24 sm:w-32 sm:h-32 rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
+                                        <Link to={`/product/${item.id}`} className="flex-shrink-0 w-24 h-24 sm:w-32 sm:h-32 rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-700 flex items-center justify-center group">
                                             <img
                                                 src={item.image}
                                                 alt={item.title}
-                                                className="w-full h-full object-contain p-2"
+                                                className="w-full h-full object-contain p-2 group-hover:scale-110 transition-transform duration-300"
                                             />
-                                        </div>
+                                        </Link>
 
                                         <div className="flex-1 min-w-0">
                                             <div className="flex justify-between items-start mb-2">
                                                 <div className="flex-1 pr-4">
-                                                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white line-clamp-2">
-                                                        {item.title}
-                                                    </h3>
+                                                    <Link to={`/product/${item.id}`}>
+                                                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white line-clamp-2 hover:text-primary transition-colors">
+                                                            {item.title}
+                                                        </h3>
+                                                    </Link>
                                                     <span className="text-xs text-gray-500 dark:text-gray-400 uppercase">
                                                         {item.category}
                                                     </span>
@@ -231,5 +233,6 @@ export default function Cart() {
                 )}
             </div>
         </div>
+
     );
 }

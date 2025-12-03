@@ -33,7 +33,7 @@ export default function Nav() {
         <div className="flex justify-between items-center h-16">
           {/* Logo Section */}
           <div className="flex-shrink-0 flex items-center">
-            <Link to="/Ecommerce-store" className="flex items-center gap-2">
+            <Link to="/" className="flex items-center gap-2">
               <img
                 src={darkMode ? darkLogo : logo}
                 alt="Site Logo"

@@ -1,5 +1,5 @@
 export default function HeaderCard({src}) {
-  let className = "group flex bg-cover p-2 transition duration-150 justify-center lg:justify-between items-center dark:text-white bg-gray-100 dark:bg-gray-600 rounded-lg";
+  let className = "group flex bg-cover p-1 md:p-2 transition duration-150 justify-center lg:justify-between items-center dark:text-white bg-gray-100 dark:bg-gray-600 rounded-lg";
   return (
     <div
       className={className}

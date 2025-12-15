@@ -27,13 +27,13 @@ export default function Cart() {
     const total = subtotal - discountAmount + shipping + tax;
 
     return (
-        <div className="min-h-screen bg-gray-50 dark:bg-gray-900 pt-28 pb-12">
+        <div className="cart min-h-screen bg-gray-50 dark:bg-gray-900 flex-col justify-center pb-12">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header */}
                 <div className="mb-8">
-                    <div className="flex items-center gap-3 mb-2">
+                    <div className="flex items-center justify-center rounded-t-2xl py-2 gap-3 mb-2 bg-primary text ">
                         <ShoppingCart className="w-8 h-8 text-primary" />
-                        <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
+                        <h1 className="text-3xl font-bold text-white dark:text-gray-800">
                             Shopping Cart
                         </h1>
                     </div>
@@ -100,7 +100,7 @@ export default function Cart() {
                                                 ${item.price.toFixed(2)}
                                             </p>
 
-                                            <div className="flex items-center justify-between">
+                                            <div className="flex flex-col items-start sm:flex-row justify-between">
                                                 <div className="flex items-center gap-3">
                                                     <span className="text-sm text-gray-600 dark:text-gray-400">
                                                         Quantity:

@@ -70,7 +70,7 @@ export default function Header() {
 
   return (
     <header>
-      <div className="header-content flex flex-col md:flex-row max-w-7xl mx-auto mb-6 gap-4 w-full px-4 md:px-6 overflow-hidden">
+      <div className="header-content flex flex-col md:flex-row max-w-7xl mx-auto mb-6 gap-4 w-full sm:px-4 md:px-6 overflow-hidden">
         <div className="banner-slider w-full md:w-3/4 h-64 md:h-96 rounded-xl relative overflow-hidden shadow-lg ">
 
           {/* Carousel Container */}
@@ -138,7 +138,7 @@ export default function Header() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 md:px-6">
+      <div className="max-w-7xl mx-auto px-1 sm:px-4 md:px-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
           <HeaderCard src={banner4} />
           <HeaderCard src={banner5} />

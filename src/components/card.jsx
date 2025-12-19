@@ -43,7 +43,7 @@ export default function Card({ product }) {
   };
 
   return (
-    <div className="card flex flex-col justify-between shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300 dark:text-white dark:border dark:border-gray-700 min-w-[160px] w-[180px] sm:min-w-[220px] sm:w-[240px] md:min-w-[240px] md:w-[260px] lg:min-w-[260px] lg:w-[280px] bg-white dark:bg-gray-800 group/card flex-shrink-0">
+    <div className="card flex flex-col justify-between shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300 dark:text-white dark:border dark:border-gray-700 h-auto w-[150px] md:w-[250px] bg-white dark:bg-gray-800 group/card flex-shrink-0">
       {/* Image Container */}
       <div className="relative h-48 bg-gray-100 dark:bg-gray-700 flex items-center justify-center overflow-hidden">
         <Link to={`/product/${product.id}`} className="w-full h-full flex items-center justify-center">
@@ -74,7 +74,7 @@ export default function Card({ product }) {
       </div>
 
       {/* Content */}
-      <div className="p-4 flex flex-col gap-2 flex-1">
+      <div className="p-2 sm:p-4 flex flex-col gap-2 flex-1">
         <Link to={`/product/${product.id}`}>
           <h3 className="font-semibold text-sm line-clamp-2 text-gray-900 dark:text-white min-h-[40px] hover:text-primary transition-colors">
             {product.title}

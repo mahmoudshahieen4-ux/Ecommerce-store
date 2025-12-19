@@ -51,7 +51,7 @@ export default function Products({ label, category }) {
   }
 
   return (
-    <div className="w-full max-w-7xl mx-auto pb-8">
+    <div className="w-full max-w-7xl mx-auto pb-2 sm:pb-4 md:pb-8">
       <div className="offer-span bg-primary text-white text-center max-w-70 p-2 text-xl font-bold flex justify-center items-center relative text-nowrap left-0">
         <Tag className="text-white mr-2" />
         {label}

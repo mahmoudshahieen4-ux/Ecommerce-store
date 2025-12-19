@@ -30,8 +30,8 @@ export default function Cart() {
         <div className="cart min-h-screen bg-gray-50 dark:bg-gray-900 flex-col justify-center pb-12">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header */}
-                <div className="mb-8">
-                    <div className="flex items-center justify-center rounded-t-2xl py-2 gap-3 mb-2 bg-primary text ">
+                <div className="mb-8 ">
+                    <div className="flex items-center justify-center rounded-t-2xl py-2 gap-3 mb-2 bg-primary text  ">
                         <ShoppingCart className="w-8 h-8 text-primary" />
                         <h1 className="text-3xl font-bold text-white dark:text-gray-800">
                             Shopping Cart

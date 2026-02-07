@@ -38,7 +38,7 @@ export default function Products({ label = "All Products", category }) {
   if (filteredProducts.length === 0) {
     return (
       <div className="w-full max-w-7xl mx-auto">
-        <div className="offer-span bg-primary text-white text-center max-w-60 p-2 text-xl font-bold flex justify-center items-center relative text-nowrap">
+        <div className="offer-span bg-primary text-white text-center max-w-40 p-2 text-xl font-bold flex justify-center items-center relative text-nowrap">
           <Tag className="text-white mr-2" />
           {label}
           <span className="triangle bg-dark-primary"></span>

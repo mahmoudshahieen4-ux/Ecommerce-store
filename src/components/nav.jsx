@@ -1,14 +1,24 @@
 import logo from "../assets/logo.png";
 import darkLogo from "../assets/dark-logo.png";
-import { Menu, XIcon, Search, ShoppingCart, Heart, Moon } from "lucide-react";
+import { Menu, X, Search, ShoppingCart, Heart, Moon } from "lucide-react";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAppContext } from "../context/AppContext";
 
 export default function Nav() {
   const [isOpen, setIsOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
   const { getCartCount, wishlistItems } = useAppContext();
+  const navigate = useNavigate();
+
+  const handleSearch = (e) => {
+    if (e.key === "Enter" && searchQuery.trim()) {
+      navigate(`/products?search=${encodeURIComponent(searchQuery.trim())}`);
+      setIsOpen(false);
+      setSearchQuery("");
+    }
+  };
 
   useEffect(() => {
     if (darkMode) {
@@ -50,6 +60,9 @@ export default function Nav() {
               </div>
               <input
                 type="text"
+                value={searchQuery}
+                onKeyDown={handleSearch}
+                onChange={(e) => setSearchQuery(e.target.value)}
                 className="block w-full pl-10 pr-3 py-2 border border-gray-300 dark:border-gray-700 rounded-full leading-5 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent sm:text-sm transition-all duration-200"
                 placeholder="Search products..."
               />
@@ -107,21 +120,21 @@ export default function Nav() {
               onClick={() => setIsOpen(!isOpen)}
               className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 dark:text-gray-200 hover:text-primary focus:outline-none z-[9999]"
             >
-              {isOpen ? <XIcon className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
         </div>
       </div>
 
       {/* Secondary Navbar - Categories */}
-      <div className="hidden md:block border-t border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-black/50 backdrop-blur-sm">
+      <div className="w-full border-t border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-black/50 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-center space-x-8 h-10 overflow-x-auto no-scrollbar">
-            {['Electronics', 'Toys', 'Decor', 'Clothes', 'Tools', 'Jewelry & Watches', 'Appliances'].map((category) => (
+          <div className="flex items-center space-x-6 h-12 overflow-x-auto no-scrollbar scroll-smooth">
+            {['Electronics', 'Jewelery', "Men's Clothing", "Women's Clothing"].map((category) => (
               <Link
                 key={category}
-                to={`/category/${category.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}`}
-                className="text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors whitespace-nowrap"
+                to={`/category/${category.toLowerCase()}`}
+                className="text-sm font-semibold text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors whitespace-nowrap min-w-fit py-1 border-b-2 border-transparent hover:border-primary"
               >
                 {category}
               </Link>
@@ -141,7 +154,7 @@ export default function Nav() {
           <div className="flex items-center justify-between px-4 h-16 border-b border-gray-200 dark:border-gray-800 shrink-0">
             <span className="text-lg font-bold text-gray-900 dark:text-white">Menu</span>
             <button onClick={() => setIsOpen(false)} className="p-2 rounded-md text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
-              <XIcon className="h-6 w-6" />
+              <X className="h-6 w-6" />
             </button>
           </div>
 
@@ -151,6 +164,9 @@ export default function Nav() {
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
               <input
                 type="text"
+                value={searchQuery}
+                onKeyDown={handleSearch}
+                onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full pl-9 pr-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-800 text-sm focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
                 placeholder="Search..."
               />
@@ -167,10 +183,10 @@ export default function Nav() {
             <div className="border-t border-gray-200 dark:border-gray-800 pt-4">
               <span className="block px-3 text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Categories</span>
               <nav className="space-y-1">
-                {['Electronics', 'Toys', 'Decor', 'Clothes', 'Tools', 'Jewelry & Watches', 'Appliances'].map((category) => (
+                {['Electronics', 'Jewelery', "Men's Clothing", "Women's Clothing"].map((category) => (
                   <Link
                     key={category}
-                    to={`/category/${category.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}`}
+                    to={`/category/${category.toLowerCase()}`}
                     className="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-primary transition-colors"
                   >
                     {category}

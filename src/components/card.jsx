@@ -43,9 +43,9 @@ export default function Card({ product }) {
   };
 
   return (
-    <div className="card flex flex-col justify-between shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300 dark:text-white dark:border dark:border-gray-700 h-auto w-[150px] md:w-[250px] bg-white dark:bg-gray-800 group/card flex-shrink-0">
+    <div className="card flex flex-col justify-between shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300 dark:text-white dark:border dark:border-gray-700 h-full w-[150px] md:w-[250px] bg-white dark:bg-gray-800 group/card flex-shrink-0">
       {/* Image Container */}
-      <div className="relative h-48 bg-gray-100 dark:bg-gray-700 flex items-center justify-center overflow-hidden">
+      <div className="relative h-32 sm:h-48 bg-gray-100 dark:bg-gray-700 flex items-center justify-center overflow-hidden">
         <Link to={`/product/${product.id}`} className="w-full h-full flex items-center justify-center">
           <img
             src={product.image}
@@ -76,7 +76,7 @@ export default function Card({ product }) {
       {/* Content */}
       <div className="p-2 sm:p-4 flex flex-col gap-2 flex-1">
         <Link to={`/product/${product.id}`}>
-          <h3 className="font-semibold text-sm line-clamp-2 text-gray-900 dark:text-white min-h-[40px] hover:text-primary transition-colors">
+          <h3 className="font-semibold text-[10px] sm:text-sm line-clamp-2 text-gray-900 dark:text-white min-h-[30px] sm:min-h-[40px] hover:text-primary transition-colors">
             {product.title}
           </h3>
         </Link>
@@ -87,7 +87,7 @@ export default function Card({ product }) {
         </span>
 
         {/* Rating */}
-        <div className="flex items-center gap-1">
+        <div className="hidden sm:flex items-center gap-1">
           {renderStars()}
           <span className="text-xs text-gray-600 dark:text-gray-400 ml-1">
             ({product.rating?.count || 0})
@@ -95,21 +95,28 @@ export default function Card({ product }) {
         </div>
 
         {/* Price */}
-        <p className="text-2xl font-bold text-primary mt-auto">
+        <p className="text-lg sm:text-2xl font-bold text-primary mt-auto">
           ${product.price.toFixed(2)}
         </p>
 
         {/* Buttons */}
-        <div className="flex gap-2 mt-2">
+        <div className="flex gap-2 mt-1 sm:mt-2">
           <button
             onClick={handleAddToCart}
-            className={`flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg font-medium transition-all ${addedToCart
+            className={`flex-1 flex items-center justify-center gap-1 sm:gap-2 px-1.5 sm:px-4 py-1.5 sm:py-2.5 rounded-lg font-medium transition-all ${addedToCart
               ? "bg-green-500 text-white"
               : "bg-primary hover:bg-dark-primary text-white"
               } shadow-md hover:shadow-lg`}
           >
-            <ShoppingCart className="w-4 h-4" />
-            {addedToCart ? "Added!" : inCart ? "Add More" : "Add to Cart"}
+            <ShoppingCart className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+            <span className="text-[9px] sm:text-sm whitespace-nowrap">
+              {addedToCart ? "Added!" : inCart ? "Add More" : (
+                <>
+                  <span className="hidden xs:inline">Add to Cart</span>
+                  <span className="xs:hidden">Add</span>
+                </>
+              )}
+            </span>
           </button>
         </div>
       </div>

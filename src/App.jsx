@@ -1,6 +1,6 @@
 import Home from "./pages/Home";
 import Nav from "./components/nav";
-import Products from "./components/products";
+import ProductsPage from "./pages/productsPage";
 import About from "./pages/about";
 import Login from "./pages/login";
 import SignUp from "./pages/signup";
@@ -24,7 +24,7 @@ function App() {
       <main className={`mx-auto overflow-x-hidden w-full dark:bg-gray-900 ${isAuthPage ? '' : 'pt-30'}`}>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/products" element={<Products />} />
+          <Route path="/products" element={<ProductsPage />} />
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />

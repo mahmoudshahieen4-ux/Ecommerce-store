@@ -3,7 +3,7 @@ import { Tag, ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
 import { useRef } from "react";
 import { useAppContext } from "../context/AppContext";
 
-export default function Products({ label, category }) {
+export default function Products({ label = "All Products", category }) {
   const scrollRef = useRef(null);
   const { products, loading } = useAppContext();
 

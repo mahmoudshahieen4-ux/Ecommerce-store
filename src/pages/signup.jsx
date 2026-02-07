@@ -2,10 +2,49 @@ import logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
 import { User, Mail, Phone, Lock, Eye, EyeOff, UserPlus } from "lucide-react";
 import { useState } from "react";
+import { useFormik } from "formik";
+import { object, string, boolean, ref } from "yup";
 
 export default function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const formik = useFormik({
+    initialValues: {
+      fullname: "",
+      email: "",
+      phone: "",
+      password: "",
+      confirmPassword: "",
+      terms: false,
+    },
+    validationSchema: object({
+      fullname: string()
+        .min(3, "Full name must be at least 3 characters")
+        .required("Full name is required"),
+      email: string()
+        .email("Invalid email address")
+        .required("Email is required"),
+      phone: string()
+        .matches(/^[0-9]+$/, "Phone number must be digits only")
+        .min(10, "Phone number must be at least 10 digits")
+        .required("Phone number is required"),
+      password: string()
+        .min(8, "Password must be at least 8 characters")
+        .matches(/[a-zA-Z]/, "Password must contain at least one letter")
+        .required("Password is required"),
+      confirmPassword: string()
+        .oneOf([ref("password"), null], "Passwords must match")
+        .required("Confirm password is required"),
+      terms: boolean()
+        .oneOf([true], "You must accept the terms and conditions")
+        .required(),
+    }),
+    onSubmit: (values) => {
+      console.log("Form submitted successfully:", values);
+      alert("Account created successfully!");
+    },
+  });
 
   return (
     <main className="w-screen min-h-screen bg-gradient-to-br from-red-600 via-orange-500 to-orange-400 pb-5 pt-30 flex justify-center items-center">
@@ -16,7 +55,8 @@ export default function SignUp() {
           <p className="text-gray-700 dark:text-gray-200">Join us and start shopping</p>
         </div>
 
-        <form action="#" method="POST" className="space-y-4">
+        <form onSubmit={formik.handleSubmit} className="space-y-4">
+          {/* Full Name */}
           <div className="space-y-1">
             <label htmlFor="fullname" className="block text-sm font-medium text-gray-800 dark:text-gray-200">
               Full Name
@@ -28,14 +68,17 @@ export default function SignUp() {
               <input
                 type="text"
                 id="fullname"
-                name="fullname"
-                className="block w-full pl-10 pr-3 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg bg-white/50 dark:bg-gray-800/50 text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200"
+                {...formik.getFieldProps("fullname")}
+                className={`block w-full pl-10 pr-3 py-2.5 border ${formik.touched.fullname && formik.errors.fullname ? "border-red-500" : "border-gray-300 dark:border-gray-600"} rounded-lg bg-white/50 dark:bg-gray-800/50 text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200`}
                 placeholder="Enter your full name"
-                required
               />
             </div>
+            {formik.touched.fullname && formik.errors.fullname ? (
+              <p className="text-red-500 text-xs mt-1">{formik.errors.fullname}</p>
+            ) : null}
           </div>
 
+          {/* Email */}
           <div className="space-y-1">
             <label htmlFor="email" className="block text-sm font-medium text-gray-800 dark:text-gray-200">
               Email Address
@@ -47,14 +90,17 @@ export default function SignUp() {
               <input
                 type="email"
                 id="email"
-                name="email"
-                className="block w-full pl-10 pr-3 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg bg-white/50 dark:bg-gray-800/50 text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200"
+                {...formik.getFieldProps("email")}
+                className={`block w-full pl-10 pr-3 py-2.5 border ${formik.touched.email && formik.errors.email ? "border-red-500" : "border-gray-300 dark:border-gray-600"} rounded-lg bg-white/50 dark:bg-gray-800/50 text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200`}
                 placeholder="Enter your email"
-                required
               />
             </div>
+            {formik.touched.email && formik.errors.email ? (
+              <p className="text-red-500 text-xs mt-1">{formik.errors.email}</p>
+            ) : null}
           </div>
 
+          {/* Phone */}
           <div className="space-y-1">
             <label htmlFor="phone" className="block text-sm font-medium text-gray-800 dark:text-gray-200">
               Phone Number
@@ -66,14 +112,17 @@ export default function SignUp() {
               <input
                 type="tel"
                 id="phone"
-                name="phone"
-                className="block w-full pl-10 pr-3 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg bg-white/50 dark:bg-gray-800/50 text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200"
+                {...formik.getFieldProps("phone")}
+                className={`block w-full pl-10 pr-3 py-2.5 border ${formik.touched.phone && formik.errors.phone ? "border-red-500" : "border-gray-300 dark:border-gray-600"} rounded-lg bg-white/50 dark:bg-gray-800/50 text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200`}
                 placeholder="Enter your phone number"
-                required
               />
             </div>
+            {formik.touched.phone && formik.errors.phone ? (
+              <p className="text-red-500 text-xs mt-1">{formik.errors.phone}</p>
+            ) : null}
           </div>
 
+          {/* Password */}
           <div className="space-y-1">
             <label htmlFor="password" className="block text-sm font-medium text-gray-800 dark:text-gray-200">
               Password
@@ -85,10 +134,9 @@ export default function SignUp() {
               <input
                 type={showPassword ? "text" : "password"}
                 id="password"
-                name="password"
-                className="block w-full pl-10 pr-10 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg bg-white/50 dark:bg-gray-800/50 text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200"
+                {...formik.getFieldProps("password")}
+                className={`block w-full pl-10 pr-10 py-2.5 border ${formik.touched.password && formik.errors.password ? "border-red-500" : "border-gray-300 dark:border-gray-600"} rounded-lg bg-white/50 dark:bg-gray-800/50 text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200`}
                 placeholder="Create a password"
-                required
               />
               <button
                 type="button"
@@ -98,10 +146,14 @@ export default function SignUp() {
                 {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
               </button>
             </div>
+            {formik.touched.password && formik.errors.password ? (
+              <p className="text-red-500 text-xs mt-1">{formik.errors.password}</p>
+            ) : null}
           </div>
 
+          {/* Confirm Password */}
           <div className="space-y-1">
-            <label htmlFor="confirm-password" className="block text-sm font-medium text-gray-800 dark:text-gray-200">
+            <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-800 dark:text-gray-200">
               Confirm Password
             </label>
             <div className="relative">
@@ -110,11 +162,10 @@ export default function SignUp() {
               </div>
               <input
                 type={showConfirmPassword ? "text" : "password"}
-                id="confirm-password"
-                name="confirm-password"
-                className="block w-full pl-10 pr-10 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg bg-white/50 dark:bg-gray-800/50 text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200"
+                id="confirmPassword"
+                {...formik.getFieldProps("confirmPassword")}
+                className={`block w-full pl-10 pr-10 py-2.5 border ${formik.touched.confirmPassword && formik.errors.confirmPassword ? "border-red-500" : "border-gray-300 dark:border-gray-600"} rounded-lg bg-white/50 dark:bg-gray-800/50 text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200`}
                 placeholder="Confirm your password"
-                required
               />
               <button
                 type="button"
@@ -124,11 +175,19 @@ export default function SignUp() {
                 {showConfirmPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
               </button>
             </div>
+            {formik.touched.confirmPassword && formik.errors.confirmPassword ? (
+              <p className="text-red-500 text-xs mt-1">{formik.errors.confirmPassword}</p>
+            ) : null}
           </div>
 
           <div className="space-y-3 pt-2">
             <label className="flex items-start">
-              <input type="checkbox" name="terms" required className="mt-1 h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded" />
+              <input
+                type="checkbox"
+                id="terms"
+                {...formik.getFieldProps("terms")}
+                className="mt-1 h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded"
+              />
               <span className="ml-2 text-sm text-gray-700 dark:text-gray-200">
                 I agree to the{" "}
                 <a href="#" className="font-medium text-primary hover:text-dark-primary hover:underline">
@@ -136,20 +195,18 @@ export default function SignUp() {
                 </a>
               </span>
             </label>
-            <label className="flex items-start">
-              <input type="checkbox" name="newsletter" className="mt-1 h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded" />
-              <span className="ml-2 text-sm text-gray-700 dark:text-gray-200">
-                Subscribe to newsletter
-              </span>
-            </label>
+            {formik.touched.terms && formik.errors.terms ? (
+              <p className="text-red-500 text-xs">{formik.errors.terms}</p>
+            ) : null}
           </div>
 
           <button
             type="submit"
-            className="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-primary hover:bg-dark-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-all duration-200 transform hover:-translate-y-0.5 mt-4"
+            disabled={formik.isSubmitting}
+            className="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-primary hover:bg-dark-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-all duration-200 transform hover:-translate-y-0.5 mt-4 disabled:opacity-50"
           >
             <UserPlus className="h-5 w-5 mr-2" />
-            Create Account
+            {formik.isSubmitting ? "Creating..." : "Create Account"}
           </button>
 
           <div className="relative my-6">
@@ -169,22 +226,10 @@ export default function SignUp() {
               className="w-full inline-flex justify-center py-2.5 px-4 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm bg-white dark:bg-gray-800 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
             >
               <svg className="h-5 w-5 mr-2" viewBox="0 0 24 24">
-                <path
-                  d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
-                  fill="#4285F4"
-                />
-                <path
-                  d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
-                  fill="#34A853"
-                />
-                <path
-                  d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
-                  fill="#FBBC05"
-                />
-                <path
-                  d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
-                  fill="#EA4335"
-                />
+                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
+                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
+                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05" />
+                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335" />
               </svg>
               Google
             </button>
@@ -193,9 +238,7 @@ export default function SignUp() {
               className="w-full inline-flex justify-center py-2.5 px-4 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm bg-[#1877F2] text-sm font-medium text-white hover:bg-[#166fe5] transition-colors"
             >
               <svg className="h-5 w-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                <path
-                  d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.954 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
-                />
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.954 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
               </svg>
               Facebook
             </button>

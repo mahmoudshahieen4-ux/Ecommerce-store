@@ -18,7 +18,7 @@ export default function HeaderCard({src}) {
           <p>up <br/> to</p>
           <span className="text-primary text-2xl font-semibold">70%</span>
         </span>
-          <p className="font-bold text-nowrap py-2 text-2xl text-gray-600 lg:text-xl transition duration-300 group-hover:text-primary">shop now</p>
+          <p className="font-bold text-nowrap py-2 text-2xl text-gray-600 lg:text-xl transition duration-300 group-hover:text-primary dark:text-white">shop now</p>
       </div>
     </div>
   );

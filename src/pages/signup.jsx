@@ -47,7 +47,7 @@ export default function SignUp() {
   });
 
   return (
-    <main className="w-screen min-h-screen bg-gradient-to-br from-red-600 via-orange-500 to-orange-400 pb-5 pt-30 flex justify-center items-center">
+    <main className="w-screen min-h-screen bg-linear-to-br pb-5 pt-30 flex justify-center items-center">
       <div className="container max-w-lg w-full bg-white dark:bg-black shadow-2xl rounded-md p-3 sm:p-8 sm:rounded-2xl border border-white/20">
         <div className="flex flex-col items-center mb-6">
           <img src={logo} alt="Shieen Logo" className="w-28 mb-4 drop-shadow-md" />

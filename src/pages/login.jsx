@@ -29,7 +29,7 @@ export default function Login() {
     });
 
     return (
-        <main className="w-screen min-h-screen bg-gradient-to-br from-red-600 via-orange-500 to-orange-400 pt-30 pb-5 flex justify-center items-center">
+        <main className="w-screen min-h-screen  pt-30 pb-5 flex justify-center items-center">
             <div className="container max-w-md w-full bg-white dark:bg-black shadow-2xl p-3 sm:p-8 rounded-lg sm:rounded-2xl border border-white">
                 <div className="flex flex-col items-center mb-8">
                     <img src={logo} alt="Shieen Logo" className="w-32 mb-4 drop-shadow-md" />

@@ -10,7 +10,6 @@ export default function ProductDetails() {
     const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    // Comment state
     const [comments, setComments] = useState([
         {
             id: 1,

@@ -18,7 +18,7 @@ export default function Ads(props) {
             <img
               src={img.src}
               alt={img.alt}
-              className="w-full h-56 md:h-72 object-cover hover:scale-105 transition-transform duration-500 cursor-pointer"
+              className="w-full max-h-60 object-cover hover:scale-105 transition-transform duration-500 cursor-pointer"
             />
           </div>
         ))}

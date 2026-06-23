@@ -140,10 +140,10 @@ export default function Header() {
 
       <div className="max-w-7xl mx-auto px-1 sm:px-4 md:px-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
-          <HeaderCard src={banner4} />
-          <HeaderCard src={banner5} />
-          <HeaderCard src={banner6} />
-          <HeaderCard src={banner7} />
+          <HeaderCard src={banner4} to="/product1" /> 
+          <HeaderCard src={banner5} to="/product2" />
+          <HeaderCard src={banner6} to="/product3" />
+          <HeaderCard src={banner7} to="/product4" />
         </div>
       </div>
     </header>

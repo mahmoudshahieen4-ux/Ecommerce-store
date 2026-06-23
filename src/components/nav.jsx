@@ -38,11 +38,11 @@ export default function Nav() {
   }, [isOpen]);
 
   return (
-    <nav className="w-full fixed z-[9999] top-0 transition-all duration-300 bg-white dark:bg-black border-b border-gray-200 dark:border-gray-800 shadow-sm">
+    <nav className="w-full fixed z-9999 top-0 transition-all duration-300 bg-white dark:bg-black border-b border-gray-200 dark:border-gray-800 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo Section */}
-          <div className="flex-shrink-0 flex items-center">
+          <div className="shrink-0 flex items-center">
             <Link to="/" className="flex items-center gap-2">
               <img
                 src={darkMode ? darkLogo : logo}
@@ -71,6 +71,7 @@ export default function Nav() {
 
           {/* Desktop Icons & Actions */}
           <div className="hidden md:flex items-center gap-4">
+            <div className="flex items-center gap-2 rounded-2xl shadow-sm dark:bg-gray-800">
             <button
               onClick={() => setDarkMode(!darkMode)}
               className="p-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
@@ -95,6 +96,7 @@ export default function Nav() {
                 </span>
               )}
             </Link>
+            </div>
 
             <div className="flex items-center gap-2 ml-2">
               <Link to="/login" className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary transition-colors">
@@ -118,7 +120,7 @@ export default function Nav() {
             </Link>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 dark:text-gray-200 hover:text-primary focus:outline-none z-[9999]"
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 dark:text-gray-200 hover:text-primary focus:outline-none z-9999"
             >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
@@ -145,11 +147,11 @@ export default function Nav() {
 
       {/* Mobile Menu Overlay */}
       {isOpen && (
-        <div className="md:hidden fixed inset-0 z-[9998] bg-black/50 backdrop-blur-sm" onClick={() => setIsOpen(false)}></div>
+        <div className="md:hidden fixed inset-0 z-9998 bg-black/50 backdrop-blur-sm" onClick={() => setIsOpen(false)}></div>
       )}
 
       {/* Mobile Menu Drawer */}
-      <div className={`md:hidden fixed inset-y-0 left-0 z-[9999] w-64 bg-white dark:bg-gray-900 shadow-2xl transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+      <div className={`md:hidden fixed inset-y-0 left-0 z-9999 w-64 bg-white dark:bg-gray-900 shadow-2xl transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
         <div className="flex flex-col h-full">
           <div className="flex items-center justify-between px-4 h-16 border-b border-gray-200 dark:border-gray-800 shrink-0">
             <span className="text-lg font-bold text-gray-900 dark:text-white">Menu</span>
